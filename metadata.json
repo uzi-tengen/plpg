@@ -1,0 +1,5 @@
+{
+  "name": "Art of War: Strategy Clone",
+  "description": "자동 전투 메커니즘, 유닛 합성, 그리고 무한한 전술 레벨을 특징으로 하는 전략 게임입니다. 군대를 배치하고, 합성하여 강화하고, 적 군단을 물리치세요.",
+  "requestFramePermissions": []
+}
