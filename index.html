@@ -371,46 +371,46 @@
 
     const StoreCard = ({ cost, onBuy, canAfford, unitCount }) => {
       return (
-        <div onClick={() => onBuy()} className={`relative group cursor-pointer w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-b from-blue-600 to-blue-800 rounded-xl shadow-xl border-2 sm:border-4 border-blue-400 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105`}>
-          <div className="text-3xl sm:text-4xl mb-1 sm:mb-2 drop-shadow-lg group-hover:animate-bounce">📦</div>
-          <div className="font-bold text-white text-[10px] sm:text-xs uppercase tracking-wider">상점</div>
-          <div className="absolute -bottom-2 sm:-bottom-3 bg-yellow-500 text-black font-extrabold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border-2 border-white shadow-md flex items-center gap-1 scale-90 sm:scale-100">
-            <span className="text-[10px] sm:text-xs">🪙</span><span className="text-xs sm:text-sm">{cost}</span>
+        <div onClick={() => onBuy()} className={`relative group cursor-pointer w-14 h-20 sm:w-16 sm:h-24 bg-gradient-to-b from-blue-600 to-blue-800 rounded-xl shadow-xl border-2 sm:border-3 border-blue-400 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105`}>
+          <div className="text-xl sm:text-2xl mb-1 drop-shadow-lg group-hover:animate-bounce">📦</div>
+          <div className="font-bold text-white text-[9px] uppercase tracking-wider">상점</div>
+          <div className="absolute -bottom-2 bg-yellow-500 text-black font-extrabold px-1.5 py-0.5 rounded-full border border-white shadow-md flex items-center gap-0.5 scale-90">
+            <span className="text-[10px]">🪙</span><span className="text-[10px]">{cost}</span>
           </div>
-          <div className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] sm:text-xs font-bold w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border-2 border-white">{unitCount}</div>
+          <div className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">{unitCount}</div>
         </div>
       );
     };
 
     const UpgradeCard = ({ onOpen, hasUpgradable }) => {
       return (
-        <div onClick={onOpen} className={`relative group cursor-pointer w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-b from-purple-600 to-purple-800 rounded-xl shadow-xl border-2 sm:border-4 border-purple-400 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105`}>
-          <div className="text-3xl sm:text-4xl mb-1 sm:mb-2 drop-shadow-lg text-white group-hover:rotate-12 transition-transform"><Hammer size={32} className="sm:w-10 sm:h-10" /></div>
-          <div className="font-bold text-white text-[10px] sm:text-xs uppercase tracking-wider">연구소</div>
-          <div className="absolute -bottom-2 sm:-bottom-3 bg-purple-900 text-white font-extrabold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full border-2 border-purple-300 shadow-md flex items-center gap-1 text-[10px] sm:text-xs scale-90 sm:scale-100">강화하기</div>
-          {hasUpgradable && <div className="absolute -top-2 -right-2 bg-green-500 text-white w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border-2 border-white animate-bounce"><ArrowUpCircle size={14} className="sm:w-4 sm:h-4" /></div>}
+        <div onClick={onOpen} className={`relative group cursor-pointer w-14 h-20 sm:w-16 sm:h-24 bg-gradient-to-b from-purple-600 to-purple-800 rounded-xl shadow-xl border-2 sm:border-3 border-purple-400 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105`}>
+          <div className="text-xl sm:text-2xl mb-1 drop-shadow-lg text-white group-hover:rotate-12 transition-transform"><Hammer size={20} className="sm:w-6 sm:h-6" /></div>
+          <div className="font-bold text-white text-[9px] uppercase tracking-wider">연구소</div>
+          <div className="absolute -bottom-2 bg-purple-900 text-white font-extrabold px-1.5 py-0.5 rounded-full border border-purple-300 shadow-md flex items-center gap-0.5 text-[9px] scale-90">강화</div>
+          {hasUpgradable && <div className="absolute -top-2 -right-2 bg-green-500 text-white w-4 h-4 rounded-full flex items-center justify-center border border-white animate-bounce"><ArrowUpCircle size={10} /></div>}
         </div>
       );
     };
 
     const ArtifactCard = ({ onOpen }) => {
       return (
-        <div onClick={onOpen} className={`relative group cursor-pointer w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-b from-yellow-700 to-yellow-900 rounded-xl shadow-xl border-2 sm:border-4 border-yellow-500 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105 overflow-hidden`}>
+        <div onClick={onOpen} className={`relative group cursor-pointer w-14 h-20 sm:w-16 sm:h-24 bg-gradient-to-b from-yellow-700 to-yellow-900 rounded-xl shadow-xl border-2 sm:border-3 border-yellow-500 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105 overflow-hidden`}>
           <div className="absolute inset-0 bg-white/10 skew-x-12 translate-x-[-150%] group-hover:animate-[shine_1s_infinite]"></div>
-          <div className="text-3xl sm:text-4xl mb-1 sm:mb-2 drop-shadow-lg text-yellow-200"><Gem size={32} className="sm:w-10 sm:h-10" /></div>
-          <div className="font-bold text-yellow-100 text-[10px] sm:text-xs uppercase tracking-wider">유물</div>
-          <div className="absolute -bottom-2 bg-black/40 w-full h-4"></div>
+          <div className="text-xl sm:text-2xl mb-1 drop-shadow-lg text-yellow-200"><Gem size={20} className="sm:w-6 sm:h-6" /></div>
+          <div className="font-bold text-yellow-100 text-[9px] uppercase tracking-wider">유물</div>
+          <div className="absolute -bottom-2 bg-black/40 w-full h-2"></div>
         </div>
       );
     };
 
     const AltarCard = ({ onOpen }) => {
       return (
-        <div onClick={onOpen} className={`relative group cursor-pointer w-20 h-24 sm:w-24 sm:h-28 bg-gradient-to-b from-red-900 to-black rounded-xl shadow-xl border-2 sm:border-4 border-red-500 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105 overflow-hidden`}>
+        <div onClick={onOpen} className={`relative group cursor-pointer w-14 h-20 sm:w-16 sm:h-24 bg-gradient-to-b from-red-900 to-black rounded-xl shadow-xl border-2 sm:border-3 border-red-500 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105 overflow-hidden`}>
           <div className="absolute inset-0 bg-red-500/10 animate-pulse"></div>
-          <div className="text-3xl sm:text-4xl mb-1 sm:mb-2 drop-shadow-lg text-red-200 z-10 group-hover:-translate-y-1 transition-transform"><Scroll size={32} className="sm:w-10 sm:h-10" /></div>
-          <div className="font-bold text-red-100 text-[10px] sm:text-xs uppercase tracking-wider z-10">제단</div>
-          <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-red-600 blur-xl opacity-50"></div>
+          <div className="text-xl sm:text-2xl mb-1 drop-shadow-lg text-red-200 z-10 group-hover:-translate-y-1 transition-transform"><Scroll size={20} className="sm:w-6 sm:h-6" /></div>
+          <div className="font-bold text-red-100 text-[9px] uppercase tracking-wider z-10">제단</div>
+          <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-red-600 blur-xl opacity-50"></div>
         </div>
       );
     };
@@ -1370,11 +1370,11 @@
              return (<div style={{ position: 'fixed', left: dragPos.x, top: dragPos.y, pointerEvents: 'none', zIndex: 9999 }}><Unit entity={entity} tileSize={tileSize} isDragging={true} style={{ position: 'relative', left: 0, top: 0 }} /></div>);
           })()}
 
-          <div className="w-full h-32 sm:h-40 bg-slate-900 border-t-4 border-slate-800 flex items-center justify-center relative z-40 px-2 pb-safe">
+          <div className="w-full h-24 sm:h-32 bg-slate-900 border-t-4 border-slate-800 flex items-center justify-center relative z-40 px-2 pb-safe">
             {phase === GamePhase.PREPARATION ? (
                 <div className="w-full max-w-lg flex justify-between items-end pb-2 sm:pb-4 relative">
-                    <div className="flex gap-2 sm:gap-4 items-end"><StoreCard cost={recruitCost} onBuy={() => setIsShopModalOpen(true)} canAfford={true} unitCount={entities.filter(e => e.side === Side.PLAYER).length}/><div className="absolute left-6 top-0 bg-slate-900 text-white text-[10px] px-1 rounded border border-gray-600 z-50">{entities.filter(e => e.side === Side.PLAYER).length} / {maxUnitCap}</div><ArtifactCard onOpen={() => setIsArtifactModalOpen(true)} /></div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-6 sm:-translate-y-8 z-10"><button onClick={() => setPhase(GamePhase.BATTLE)} className="group relative w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 border-4 border-yellow-200 shadow-[0_0_30px_rgba(234,179,8,0.4)] flex flex-col items-center justify-center transition-all hover:scale-105 active:scale-95"><Swords size={32} className="sm:w-12 sm:h-12 text-yellow-900 drop-shadow-sm group-hover:animate-pulse" /><span className="font-display text-yellow-900 font-bold text-xs sm:text-lg mt-1">전투 시작</span><span className="absolute inset-0 rounded-full border-4 border-yellow-400 opacity-0 group-hover:animate-ping"></span></button></div>
+                    <div className="flex gap-2 sm:gap-4 items-end"><StoreCard cost={recruitCost} onBuy={() => setIsShopModalOpen(true)} canAfford={true} unitCount={entities.filter(e => e.side === Side.PLAYER).length}/><div className="absolute left-6 top-0 bg-slate-900 text-white text-[9px] px-1 rounded border border-gray-600 z-50">{entities.filter(e => e.side === Side.PLAYER).length} / {maxUnitCap}</div><ArtifactCard onOpen={() => setIsArtifactModalOpen(true)} /></div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-4 sm:-translate-y-6 z-10"><button onClick={() => setPhase(GamePhase.BATTLE)} className="group relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 border-4 border-yellow-200 shadow-[0_0_30px_rgba(234,179,8,0.4)] flex flex-col items-center justify-center transition-all hover:scale-105 active:scale-95"><Swords size={28} className="sm:w-10 sm:h-10 text-yellow-900 drop-shadow-sm group-hover:animate-pulse" /><span className="font-display text-yellow-900 font-bold text-xs sm:text-base mt-1">전투 시작</span><span className="absolute inset-0 rounded-full border-4 border-yellow-400 opacity-0 group-hover:animate-ping"></span></button></div>
                     <div className="flex gap-2 sm:gap-4 items-end"><AltarCard onOpen={() => setIsAltarModalOpen(true)} /><UpgradeCard onOpen={() => setIsUpgradeModalOpen(true)} hasUpgradable={Object.values(UnitType).some(t => coins >= (TECH_COST_BASE + (techLevels[t] - 1) * TECH_COST_INCREASE))}/></div>
                 </div>
             ) : (<div className="w-full flex justify-center items-center pb-4 text-slate-500 font-display text-xl tracking-widest animate-pulse">전투 진행 중...</div>)}
