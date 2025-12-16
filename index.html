@@ -72,15 +72,21 @@
     const UnitType = {
       INFANTRY: 'INFANTRY',
       ARCHER: 'ARCHER',
+      CROSSBOW: 'CROSSBOW', // New
       TANK: 'TANK',
       SPEARMAN: 'SPEARMAN',
+      VIKING: 'VIKING', // New
+      CANNON: 'CANNON', // New
       MAGE: 'MAGE',
       ASSASSIN: 'ASSASSIN',
+      SAMURAI: 'SAMURAI', // New
       GOLEM: 'GOLEM',
       DRAGON: 'DRAGON',
+      VALKYRIE: 'VALKYRIE', // New
       PALADIN: 'PALADIN',
       SNIPER: 'SNIPER',
-      VOID_WALKER: 'VOID_WALKER'
+      VOID_WALKER: 'VOID_WALKER',
+      DEVIL: 'DEVIL' // New
     };
 
     const UnitTier = {
@@ -165,29 +171,41 @@
     const UNIT_NAMES = {
       [UnitType.INFANTRY]: '보병',
       [UnitType.ARCHER]: '궁수',
+      [UnitType.CROSSBOW]: '석궁병',
       [UnitType.TANK]: '탱크',
       [UnitType.SPEARMAN]: '창병',
+      [UnitType.VIKING]: '바이킹',
+      [UnitType.CANNON]: '대포',
       [UnitType.MAGE]: '마법사',
       [UnitType.ASSASSIN]: '암살자',
+      [UnitType.SAMURAI]: '사무라이',
       [UnitType.GOLEM]: '골렘',
       [UnitType.DRAGON]: '드래곤',
+      [UnitType.VALKYRIE]: '발키리',
       [UnitType.PALADIN]: '신성 기사',
       [UnitType.SNIPER]: '저격수',
       [UnitType.VOID_WALKER]: '공허 방랑자',
+      [UnitType.DEVIL]: '마신',
     };
 
     const UNIT_BASE_STATS = {
       [UnitType.INFANTRY]: { tier: UnitTier.COMMON, hp: 120, damage: 15, attackSpeed: 1.2, range: 1.2, moveSpeed: 2.5, color: 'bg-slate-600', icon: '⚔️' },
       [UnitType.ARCHER]: { tier: UnitTier.COMMON, hp: 80, damage: 25, attackSpeed: 1.0, range: 5.5, moveSpeed: 2.2, color: 'bg-slate-600', icon: '🏹' },
+      [UnitType.CROSSBOW]: { tier: UnitTier.COMMON, hp: 90, damage: 35, attackSpeed: 0.8, range: 6.5, moveSpeed: 2.0, color: 'bg-slate-600', icon: '🏹' },
       [UnitType.TANK]: { tier: UnitTier.RARE, hp: 300, damage: 12, attackSpeed: 0.8, range: 1.2, moveSpeed: 1.8, color: 'bg-blue-700', icon: '🛡️' },
       [UnitType.SPEARMAN]: { tier: UnitTier.RARE, hp: 150, damage: 22, attackSpeed: 1.1, range: 2.5, moveSpeed: 2.3, color: 'bg-blue-700', icon: '🔱' },
+      [UnitType.VIKING]: { tier: UnitTier.RARE, hp: 250, damage: 28, attackSpeed: 1.1, range: 1.2, moveSpeed: 2.2, color: 'bg-blue-700', icon: '🪓' },
+      [UnitType.CANNON]: { tier: UnitTier.RARE, hp: 150, damage: 55, attackSpeed: 0.5, range: 7.0, moveSpeed: 1.2, color: 'bg-blue-700', icon: '💣' },
       [UnitType.MAGE]: { tier: UnitTier.EPIC, hp: 90, damage: 45, attackSpeed: 0.7, range: 6.0, moveSpeed: 2.0, color: 'bg-purple-700', icon: '🧙' },
       [UnitType.ASSASSIN]: { tier: UnitTier.EPIC, hp: 140, damage: 40, attackSpeed: 2.0, range: 1.2, moveSpeed: 3.5, color: 'bg-purple-700', icon: '🥷' },
+      [UnitType.SAMURAI]: { tier: UnitTier.EPIC, hp: 180, damage: 55, attackSpeed: 1.4, range: 1.2, moveSpeed: 3.0, color: 'bg-purple-700', icon: '🤺' },
       [UnitType.GOLEM]: { tier: UnitTier.LEGENDARY, hp: 600, damage: 25, attackSpeed: 0.6, range: 1.2, moveSpeed: 1.5, color: 'bg-yellow-700', icon: '🗿' },
       [UnitType.DRAGON]: { tier: UnitTier.LEGENDARY, hp: 400, damage: 70, attackSpeed: 0.9, range: 3.5, moveSpeed: 2.5, color: 'bg-yellow-700', icon: '🐉' },
+      [UnitType.VALKYRIE]: { tier: UnitTier.LEGENDARY, hp: 550, damage: 60, attackSpeed: 1.3, range: 1.5, moveSpeed: 3.5, color: 'bg-yellow-700', icon: '🧚‍♀️' },
       [UnitType.PALADIN]: { tier: UnitTier.MYTHIC, hp: 2000, damage: 100, attackSpeed: 1.0, range: 1.2, moveSpeed: 2.0, color: 'bg-red-900', icon: '⚜️' },
       [UnitType.SNIPER]: { tier: UnitTier.MYTHIC, hp: 350, damage: 400, attackSpeed: 0.6, range: 8.0, moveSpeed: 1.5, color: 'bg-red-900', icon: '🎯' },
-      [UnitType.VOID_WALKER]: { tier: UnitTier.MYTHIC, hp: 1000, damage: 150, attackSpeed: 1.6, range: 3.0, moveSpeed: 2.5, color: 'bg-red-900', icon: '👾' }
+      [UnitType.VOID_WALKER]: { tier: UnitTier.MYTHIC, hp: 1000, damage: 150, attackSpeed: 1.6, range: 3.0, moveSpeed: 2.5, color: 'bg-red-900', icon: '👾' },
+      [UnitType.DEVIL]: { tier: UnitTier.MYTHIC, hp: 1500, damage: 200, attackSpeed: 1.2, range: 2.0, moveSpeed: 2.8, color: 'bg-red-900', icon: '😈' }
     };
 
     const HP_MULTIPLIER = 1.8; 
@@ -231,7 +249,8 @@
     const SYNTHESIS_RECIPES = [
       { id: 'paladin', result: UnitType.PALADIN, ingredients: [UnitType.INFANTRY, UnitType.TANK], minLevel: 3, cost: 500 },
       { id: 'sniper', result: UnitType.SNIPER, ingredients: [UnitType.ARCHER, UnitType.SPEARMAN], minLevel: 3, cost: 500 },
-      { id: 'void_walker', result: UnitType.VOID_WALKER, ingredients: [UnitType.MAGE, UnitType.GOLEM], minLevel: 3, cost: 500 }
+      { id: 'void_walker', result: UnitType.VOID_WALKER, ingredients: [UnitType.MAGE, UnitType.GOLEM], minLevel: 3, cost: 500 },
+      { id: 'devil', result: UnitType.DEVIL, ingredients: [UnitType.VIKING, UnitType.SAMURAI], minLevel: 3, cost: 1000 }
     ];
 
     // --- GAME LOGIC SERVICES ---
@@ -293,15 +312,20 @@
     const generateLevel = async (levelNumber, difficulty) => {
       const diffSetting = DIFFICULTY_SETTINGS[difficulty];
       const enemyMaxRow = Math.floor(GRID_ROWS / 2) - 1;
+      
       let availableTypes = [UnitType.INFANTRY, UnitType.ARCHER];
+      if (levelNumber > 2) availableTypes.push(UnitType.CROSSBOW);
       if (levelNumber > 3) availableTypes.push(UnitType.TANK, UnitType.SPEARMAN);
-      if (levelNumber > 6) availableTypes.push(UnitType.MAGE, UnitType.ASSASSIN);
+      if (levelNumber > 4) availableTypes.push(UnitType.VIKING);
+      if (levelNumber > 6) availableTypes.push(UnitType.MAGE, UnitType.ASSASSIN, UnitType.CANNON);
+      if (levelNumber > 8) availableTypes.push(UnitType.SAMURAI);
       if (levelNumber > 10) availableTypes.push(UnitType.GOLEM, UnitType.DRAGON);
+      if (levelNumber > 15) availableTypes.push(UnitType.VALKYRIE);
 
       let baseCount = 2 + Math.floor(levelNumber / 4.0);
       if (difficulty === Difficulty.HELL) baseCount += 1 + Math.floor(levelNumber / 5);
       else if (difficulty === Difficulty.HARD) baseCount += Math.floor(levelNumber / 10);
-      const count = Math.min(baseCount, 16); 
+      const count = Math.min(baseCount, 20); 
       
       const enemies = [];
       const occupied = new Set();
@@ -371,34 +395,34 @@
 
     const StoreCard = ({ cost, onBuy, canAfford, unitCount }) => {
       return (
-        <div onClick={() => onBuy()} className={`relative group cursor-pointer w-14 h-20 sm:w-16 sm:h-24 bg-gradient-to-b from-blue-600 to-blue-800 rounded-xl shadow-xl border-2 sm:border-3 border-blue-400 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105`}>
-          <div className="text-xl sm:text-2xl mb-1 drop-shadow-lg group-hover:animate-bounce">📦</div>
-          <div className="font-bold text-white text-[9px] uppercase tracking-wider">상점</div>
-          <div className="absolute -bottom-2 bg-yellow-500 text-black font-extrabold px-1.5 py-0.5 rounded-full border border-white shadow-md flex items-center gap-0.5 scale-90">
+        <div onClick={() => onBuy()} className={`relative group cursor-pointer w-[72px] h-[56px] sm:w-24 sm:h-20 bg-gradient-to-b from-blue-600 to-blue-800 rounded-xl shadow-xl border-2 sm:border-3 border-blue-400 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105`}>
+          <div className="text-2xl sm:text-3xl mb-0 drop-shadow-lg group-hover:animate-bounce">📦</div>
+          <div className="font-bold text-white text-[10px] sm:text-xs uppercase tracking-wider leading-none mt-1">상점</div>
+          <div className="absolute -bottom-3 bg-yellow-500 text-black font-extrabold px-2 py-0.5 rounded-full border border-white shadow-md flex items-center gap-0.5 scale-90 sm:scale-100 z-10">
             <span className="text-[10px]">🪙</span><span className="text-[10px]">{cost}</span>
           </div>
-          <div className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">{unitCount}</div>
+          <div className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border border-white z-10">{unitCount}</div>
         </div>
       );
     };
 
     const UpgradeCard = ({ onOpen, hasUpgradable }) => {
       return (
-        <div onClick={onOpen} className={`relative group cursor-pointer w-14 h-20 sm:w-16 sm:h-24 bg-gradient-to-b from-purple-600 to-purple-800 rounded-xl shadow-xl border-2 sm:border-3 border-purple-400 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105`}>
-          <div className="text-xl sm:text-2xl mb-1 drop-shadow-lg text-white group-hover:rotate-12 transition-transform"><Hammer size={20} className="sm:w-6 sm:h-6" /></div>
-          <div className="font-bold text-white text-[9px] uppercase tracking-wider">연구소</div>
-          <div className="absolute -bottom-2 bg-purple-900 text-white font-extrabold px-1.5 py-0.5 rounded-full border border-purple-300 shadow-md flex items-center gap-0.5 text-[9px] scale-90">강화</div>
-          {hasUpgradable && <div className="absolute -top-2 -right-2 bg-green-500 text-white w-4 h-4 rounded-full flex items-center justify-center border border-white animate-bounce"><ArrowUpCircle size={10} /></div>}
+        <div onClick={onOpen} className={`relative group cursor-pointer w-[72px] h-[56px] sm:w-24 sm:h-20 bg-gradient-to-b from-purple-600 to-purple-800 rounded-xl shadow-xl border-2 sm:border-3 border-purple-400 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105`}>
+          <div className="text-2xl sm:text-3xl mb-0 drop-shadow-lg text-white group-hover:rotate-12 transition-transform"><Hammer size={22} className="sm:w-8 sm:h-8" /></div>
+          <div className="font-bold text-white text-[10px] sm:text-xs uppercase tracking-wider leading-none mt-1">연구소</div>
+          <div className="absolute -bottom-3 bg-purple-900 text-white font-extrabold px-2 py-0.5 rounded-full border border-purple-300 shadow-md flex items-center gap-0.5 text-[10px] scale-90 sm:scale-100 z-10">강화</div>
+          {hasUpgradable && <div className="absolute -top-2 -right-2 bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center border border-white animate-bounce z-10"><ArrowUpCircle size={12} /></div>}
         </div>
       );
     };
 
     const ArtifactCard = ({ onOpen }) => {
       return (
-        <div onClick={onOpen} className={`relative group cursor-pointer w-14 h-20 sm:w-16 sm:h-24 bg-gradient-to-b from-yellow-700 to-yellow-900 rounded-xl shadow-xl border-2 sm:border-3 border-yellow-500 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105 overflow-hidden`}>
+        <div onClick={onOpen} className={`relative group cursor-pointer w-[72px] h-[56px] sm:w-24 sm:h-20 bg-gradient-to-b from-yellow-700 to-yellow-900 rounded-xl shadow-xl border-2 sm:border-3 border-yellow-500 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105 overflow-hidden`}>
           <div className="absolute inset-0 bg-white/10 skew-x-12 translate-x-[-150%] group-hover:animate-[shine_1s_infinite]"></div>
-          <div className="text-xl sm:text-2xl mb-1 drop-shadow-lg text-yellow-200"><Gem size={20} className="sm:w-6 sm:h-6" /></div>
-          <div className="font-bold text-yellow-100 text-[9px] uppercase tracking-wider">유물</div>
+          <div className="text-2xl sm:text-3xl mb-0 drop-shadow-lg text-yellow-200"><Gem size={22} className="sm:w-8 sm:h-8" /></div>
+          <div className="font-bold text-yellow-100 text-[10px] sm:text-xs uppercase tracking-wider leading-none mt-1">유물</div>
           <div className="absolute -bottom-2 bg-black/40 w-full h-2"></div>
         </div>
       );
@@ -406,10 +430,10 @@
 
     const AltarCard = ({ onOpen }) => {
       return (
-        <div onClick={onOpen} className={`relative group cursor-pointer w-14 h-20 sm:w-16 sm:h-24 bg-gradient-to-b from-red-900 to-black rounded-xl shadow-xl border-2 sm:border-3 border-red-500 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105 overflow-hidden`}>
+        <div onClick={onOpen} className={`relative group cursor-pointer w-[72px] h-[56px] sm:w-24 sm:h-20 bg-gradient-to-b from-red-900 to-black rounded-xl shadow-xl border-2 sm:border-3 border-red-500 flex flex-col items-center justify-center transform transition-all active:scale-95 hover:scale-105 overflow-hidden`}>
           <div className="absolute inset-0 bg-red-500/10 animate-pulse"></div>
-          <div className="text-xl sm:text-2xl mb-1 drop-shadow-lg text-red-200 z-10 group-hover:-translate-y-1 transition-transform"><Scroll size={20} className="sm:w-6 sm:h-6" /></div>
-          <div className="font-bold text-red-100 text-[9px] uppercase tracking-wider z-10">제단</div>
+          <div className="text-2xl sm:text-3xl mb-0 drop-shadow-lg text-red-200 z-10 group-hover:-translate-y-1 transition-transform"><Scroll size={22} className="sm:w-8 sm:h-8" /></div>
+          <div className="font-bold text-red-100 text-[10px] sm:text-xs uppercase tracking-wider z-10 leading-none mt-1">제단</div>
           <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-red-600 blur-xl opacity-50"></div>
         </div>
       );
@@ -576,7 +600,7 @@
           const initialTech = {};
           Object.values(UnitType).forEach(t => initialTech[t] = 1);
           setTechLevels(initialTech);
-          setArtifactLevels({ [ArtifactType.HOLY_SWORD]: 0, [ArtifactType.ANCIENT_SHIELD]: 0, [ArtifactType.WAR_DRUMS]: 0, [ArtifactType.WIND_CLOAK]: 0, [ArtifactType.MIDAS_TOUCH]: 0 });
+          setArtifactLevels({ [ArtifactType.HOLY_SWORD]: 0, [ArtifactType.ANCIENT_SHIELD]: 0, [ArtifactType.WAR_DRUMS]: 0, [ArtifactType.WIND_CLOAK]: 0, [ArtifactType.MIDAS_TOUCH]: 0, });
           setArtifactCost(ARTIFACT_COST_BASE);
           setEntities([]);
           entitiesRef.current = [];
@@ -1370,14 +1394,27 @@
              return (<div style={{ position: 'fixed', left: dragPos.x, top: dragPos.y, pointerEvents: 'none', zIndex: 9999 }}><Unit entity={entity} tileSize={tileSize} isDragging={true} style={{ position: 'relative', left: 0, top: 0 }} /></div>);
           })()}
 
-          <div className="w-full h-24 sm:h-32 bg-slate-900 border-t-4 border-slate-800 flex items-center justify-center relative z-40 px-2 pb-safe">
+          <div className="w-full bg-slate-900 border-t-4 border-slate-800 flex items-center justify-center relative z-40 px-2 pt-4 pb-safe min-h-[100px]">
             {phase === GamePhase.PREPARATION ? (
-                <div className="w-full max-w-lg flex justify-between items-end pb-2 sm:pb-4 relative">
-                    <div className="flex gap-2 sm:gap-4 items-end"><StoreCard cost={recruitCost} onBuy={() => setIsShopModalOpen(true)} canAfford={true} unitCount={entities.filter(e => e.side === Side.PLAYER).length}/><div className="absolute left-6 top-0 bg-slate-900 text-white text-[9px] px-1 rounded border border-gray-600 z-50">{entities.filter(e => e.side === Side.PLAYER).length} / {maxUnitCap}</div><ArtifactCard onOpen={() => setIsArtifactModalOpen(true)} /></div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-4 sm:-translate-y-6 z-10"><button onClick={() => setPhase(GamePhase.BATTLE)} className="group relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 border-4 border-yellow-200 shadow-[0_0_30px_rgba(234,179,8,0.4)] flex flex-col items-center justify-center transition-all hover:scale-105 active:scale-95"><Swords size={28} className="sm:w-10 sm:h-10 text-yellow-900 drop-shadow-sm group-hover:animate-pulse" /><span className="font-display text-yellow-900 font-bold text-xs sm:text-base mt-1">전투 시작</span><span className="absolute inset-0 rounded-full border-4 border-yellow-400 opacity-0 group-hover:animate-ping"></span></button></div>
-                    <div className="flex gap-2 sm:gap-4 items-end"><AltarCard onOpen={() => setIsAltarModalOpen(true)} /><UpgradeCard onOpen={() => setIsUpgradeModalOpen(true)} hasUpgradable={Object.values(UnitType).some(t => coins >= (TECH_COST_BASE + (techLevels[t] - 1) * TECH_COST_INCREASE))}/></div>
+                <div className="w-full max-w-lg flex justify-between items-end pb-2 relative">
+                    <div className="flex gap-2 sm:gap-6 items-end">
+                        <StoreCard cost={recruitCost} onBuy={() => setIsShopModalOpen(true)} canAfford={true} unitCount={entities.filter(e => e.side === Side.PLAYER).length}/>
+                        <div className="absolute left-6 -top-2 bg-slate-900 text-white text-[9px] px-1 rounded border border-gray-600 z-50 shadow-sm">{entities.filter(e => e.side === Side.PLAYER).length} / {maxUnitCap}</div>
+                        <ArtifactCard onOpen={() => setIsArtifactModalOpen(true)} />
+                    </div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-6 z-20">
+                        <button onClick={() => setPhase(GamePhase.BATTLE)} className="group relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 border-4 border-yellow-200 shadow-[0_0_30px_rgba(234,179,8,0.4)] flex flex-col items-center justify-center transition-all hover:scale-105 active:scale-95">
+                            <Swords size={32} className="sm:w-10 sm:h-10 text-yellow-900 drop-shadow-sm group-hover:animate-pulse" />
+                            <span className="font-display text-yellow-900 font-bold text-xs sm:text-sm mt-1">START</span>
+                            <span className="absolute inset-0 rounded-full border-4 border-yellow-400 opacity-0 group-hover:animate-ping"></span>
+                        </button>
+                    </div>
+                    <div className="flex gap-2 sm:gap-6 items-end">
+                        <AltarCard onOpen={() => setIsAltarModalOpen(true)} />
+                        <UpgradeCard onOpen={() => setIsUpgradeModalOpen(true)} hasUpgradable={Object.values(UnitType).some(t => coins >= (TECH_COST_BASE + (techLevels[t] - 1) * TECH_COST_INCREASE))}/>
+                    </div>
                 </div>
-            ) : (<div className="w-full flex justify-center items-center pb-4 text-slate-500 font-display text-xl tracking-widest animate-pulse">전투 진행 중...</div>)}
+            ) : (<div className="w-full flex justify-center items-center pb-2 text-slate-500 font-display text-xl tracking-widest animate-pulse">전투 진행 중...</div>)}
           </div>
         </div>
       );
